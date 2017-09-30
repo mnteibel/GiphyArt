@@ -1,0 +1,19 @@
+body{
+	position:relative;
+	left:50;
+}
+
+aside {
+	position:fixed;
+	right:100;
+}
+
+#buttons-view{
+	position:absolute;
+	right:400;
+}
+
+#gifs{
+	position:absolute;
+	top:100;
+}
