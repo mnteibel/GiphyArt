@@ -3,6 +3,8 @@ var buttons = ["Ferris Bueller's Day Off", "Back to the Future", "Ghostbusters",
   
   function displayGifs(){
 
+    $("#gifs").empty();
+
     // declares button data-name to gif variable
     var gifs = $(this).attr("data-name")
 
@@ -21,22 +23,33 @@ var buttons = ["Ferris Bueller's Day Off", "Back to the Future", "Ghostbusters",
 
           var gifDiv = $("<div>")
 
+          gifDiv.addClass("picAndRating")
+
           var ratingLetter = results[i].rating;
 
           var ratings = $("<p>").text("Rating: " + ratingLetter)
       
           var gif = $("<img>");
 
-          gif.attr("src", results[i].images.fixed_height.url)
+          gif.addClass("pic")
+
+          gif.attr("src", results[i].images.fixed_height_still.url)
+
+          gif.attr("data-animated", results[i].images.fixed_height.url)
+
+          gif.attr("data-still", results[i].images.fixed_height_still.url)
+
+          gif.attr("state", "still");
 
           gifDiv.append(ratings)
 
           gifDiv.append(gif)
 
-          $("#gifs").prepend(gifDiv)
+          $("#gifs").append(gifDiv)
       }
     })
   }
+
   /// Call function to create buttons from buttons array
   function renderButtons() {
 
@@ -66,9 +79,34 @@ var buttons = ["Ferris Bueller's Day Off", "Back to the Future", "Ghostbusters",
       buttons.push(newButton);
 
       renderButtons();
+
     })
+
+
+
 
   renderButtons();
 
     $(document).on("click", ".button", displayGifs);
+
+    $(document).on("click", ".pic", function(){
+        var state = $(this).attr("state")
+
+        console.log(this)
+
+      if(state == "still"){
+      console.log("WORKED")
+      $(this).attr("src", $(this).attr("data-animated"));
+      $(this).attr("state", "animated");
+      console.log(this)
+      }
+      else{
+      console.log("DIDNT WORK")
+      $(this).attr("src", $(this).attr("data-still"));            
+      $(this).attr("state", "still");
+      console.log(this)
+    }
+    })
+
+
 

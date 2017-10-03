@@ -1,19 +1,35 @@
 body{
 	position:relative;
 	left:50;
+	margin-bottom:100px;
+	background-color:#E8E8E8; 
 }
 
 aside {
-	position:fixed;
+	position:absolute;
 	right:100;
+	top:0;
+	
 }
 
 #buttons-view{
 	position:absolute;
-	right:400;
+	right:100;
+}
+.button{
+	background-color:#4C6A92;
+	border:none;
+	margin:2px;
 }
 
 #gifs{
-	position:absolute;
-	top:100;
+	position:relative;
+	top:80;
+	left:0;
+	right:200;
+	margin-bottom:50px; 
+}
+.picAndRating{
+	float:left;
+	margin-left:10px;
 }
